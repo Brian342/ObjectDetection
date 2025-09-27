@@ -1,0 +1,26 @@
+<annotation>
+	<folder>livelong</folder>
+	<filename>livelong.473ab580-87bf-11f0-9565-1094bbd0ecec.jpg</filename>
+	<path>/Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/JupyterAI-Clean/Tensorflow/workspace/images/collectedimages/livelong/livelong.473ab580-87bf-11f0-9565-1094bbd0ecec.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>LiveLong</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>142</xmin>
+			<ymin>227</ymin>
+			<xmax>534</xmax>
+			<ymax>693</ymax>
+		</bndbox>
+	</object>
+</annotation>
