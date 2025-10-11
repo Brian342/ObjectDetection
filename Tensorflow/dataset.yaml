@@ -1,0 +1,10 @@
+train: Tensorflow/train/images
+val: Tensorflow/val/images
+test: Tensorflow/test/images
+
+nc: 4
+names:
+  - LiveLong
+  - ThankYou
+  - Thumbsdown
+  - Thumbsup
