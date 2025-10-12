@@ -1,10 +1,10 @@
-train: Tensorflow/train/images
-val: Tensorflow/val/images
-test: Tensorflow/test/images
+train: /Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/ObjectDetection/Tensorflow/train/images
+val: /Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/ObjectDetection/Tensorflow/val/images
+test: /Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/ObjectDetection/Tensorflow/test/images
 
 nc: 4
 names:
-  - LiveLong
-  - ThankYou
-  - Thumbsdown
-  - Thumbsup
+  0: LiveLong
+  1: ThankYou
+  2: Thumbsdown
+  3: Thumbsup
