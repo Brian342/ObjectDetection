@@ -71,3 +71,7 @@ section[data-testid="stSidebar"] .css-1d391kg {
 """
 
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+with st.sidebar:
+    st.markdown(
+        "<div style='display:flex;align-items:center;gap:10px'><div class='logo-circle'>WA</div><div><h3 style='margin:0'>WakeApp</h3><div style='font-size:12px;color:gray'>Opencv · YOLO · Torch</div></div></div>",
+        unsafe_allow_html=True)
