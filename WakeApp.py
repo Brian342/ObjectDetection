@@ -97,12 +97,56 @@ with tabs[0]:
 
     st.markdown("<div style='margin-bottom:10px'></div>", unsafe_allow_html=True)
 
-    c1, c2 = st.columns([2, 1])
+    c1, c2, c3 = st.columns([3.4, 4.99, 5.5])
 
     with c1:
         st.markdown(
-            "<div class='card'><h4 style='margin:0'>Why need this system</h4>"
-            "<div style='color:gray;margin-top:6px'></div></div>",
+            "<div class='card'><h4 style='margin:0'>Why need this system?</h4>"
+            "<div style='color:gray;margin-top:6px'>Alot of car crash result from drivers sleeping while driving. "
+            "Drowsy driving is a significant factor in car crashes, with estimates suggesting it's involved in nearly 30,000 "
+            "deaths between 2017 and 2021 and can lead to significantly increased crash risk. For example, sleeping less than 5 "
+            "hours per night quadruples a driver's risk of crashing compared to those who sleep 8 or more hours</div></div>",
             unsafe_allow_html=True
         )
 
+        key_stats = [
+            """
+            * Fatalities:- Between 2017 and 2021, drowsy driving was linked to approximately 30,000 deaths.
+            * Injuries and crashes:-In 2017, the NHTSA estimated 91,000 police-reported crashes involved drowsy drivers, resulting in 50,000 injuries and nearly 800 deaths. These figures are considered underestimates of the actual impact.,
+            * Risk increases with sleep deprivation:- Sleeping 6-7 hours a night doubles the risk of a crash compared to sleeping 8 or more hours. - Sleeping less than 5 hours per night increases crash risk by four to five times."
+            """
+        ]
+
+    with c2:
+        st.markdown(
+            f"""
+            <div class='card' style='text-align:left'>
+            <h5 style='margin:0'>Key Stats and risk</h5>
+            <div style='color:gray;margin-top:6px'>
+            {' '.join(key_stats)}
+            </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        crash_type = [
+            """
+            * Road departure: A significant portion of road departure crashes, where a vehicle leaves the roadway, are attributed to drowsy driving.
+            * Head-on collisions: It's estimated that up to 45% of head-on crashes result from a drowsy driver drifting across the center line.
+            * Time of day: The highest number of drowsy driving crashes occur during the early morning hours, specifically between 2:00 a.m. and 6:00 a.m.
+            * International data: In-depth studies in other countries show high percentages of fatigue-related crashes, such as 20% on motorways in one study and 16-19% of fatal accidents in Finland between 1995 and 1999
+            """
+        ]
+    with c3:
+        st.markdown(
+            f"""
+            <div class='card' style='text-align:left'>
+            <h8 style='margin:0'>common crash types</h8>
+            <div style='color:gray;margin-top:6px'>
+            {' '.join(crash_type)}
+            </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
