@@ -75,3 +75,22 @@ with st.sidebar:
     st.markdown(
         "<div style='display:flex;align-items:center;gap:10px'><div class='logo-circle'>WA</div><div><h3 style='margin:0'>WakeApp</h3><div style='font-size:12px;color:gray'>Opencv · YOLO · Torch</div></div></div>",
         unsafe_allow_html=True)
+    st.markdown("-------")
+    st.caption("Built w/ OpenCv + YOLO + Torch. prototype")
+
+tabs = st.tabs(["Overview", "visual", "settings"])
+
+with tabs[0]:
+    st.markdown(
+        """
+            <div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:20px'>
+            <div>
+                <h1 style='margin:0;background:linear-gradient(90deg,#06b6d4,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;'>
+                    WakeApp
+                </h1>
+                <div style='color:gray;font-size:15px;'>AI-powered and monitoring  — checks if you are awake when driving</div>
+            </div>
+            </div>
+            """,
+        unsafe_allow_html=True
+    )
