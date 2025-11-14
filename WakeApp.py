@@ -4,6 +4,7 @@ import os
 import cv2
 import time
 import numpy as np
+import pydeck as pdk
 import streamlit as st
 from ultralytics import YOLO
 from matplotlib import pyplot as plt
@@ -153,11 +154,53 @@ with tabs[0]:
     st.markdown("<br>", unsafe_allow_html=True)
 
 with tabs[1]:
-    st.markdown(
-        "<div class='card'><h4 style='margin:0'>Why need this system?</h4>"
-        "<div style='color:gray;margin-top:6px'>Alot of car crash result from drivers sleeping while driving. "
-        "Drowsy driving is a significant factor in car crashes, with estimates suggesting it's involved in nearly 30,000 "
-        "deaths between 2017 and 2021 and can lead to significantly increased crash risk. For example, sleeping less than 5 "
-        "hours per night quadruples a driver's risk of crashing compared to those who sleep 8 or more hours</div></div>",
-        unsafe_allow_html=True
-    ),
+    st.header(
+        "Visual Page")
+    col1, col2 = st.columns([2, 1.9])
+    with col1:
+        st.markdown(
+            """
+            <div style="
+                background-color: #ffffff;
+                padding: 1.2rem;
+                border-radius: 15px;
+                box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+                height: 450px;
+            ">
+            <h3 style="margin-top:0;color:black:">Route Map</h3>
+            <p style="color:gray">Your map and directions will appear here.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        st.empty()
+
+    with col2:
+        st.markdown(
+            """
+             <div style="
+             background-color: #ffffff;
+             padding: 1.5rem;
+             border-radius: 15px;
+             text-align: center;
+             box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+             ">
+             <h3 style="color:black">Status</h3>
+             <div id="state-box" style="
+             font-size: 2rem;
+             font-weight: bold;
+             margin-top: 20px;
+             padding: 20px;
+             border-radius: 12px;
+             background-color: #e8f0fe;
+             color: #1a73e8;
+             ">
+             Awake
+             </div>
+             </div>
+             """,
+            unsafe_allow_html=True
+        )
+
+
+
