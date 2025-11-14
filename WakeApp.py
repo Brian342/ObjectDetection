@@ -5,6 +5,8 @@ import cv2
 import time
 import numpy as np
 import pydeck as pdk
+from streamlit_folium import st_folium
+import folium
 import streamlit as st
 from ultralytics import YOLO
 from matplotlib import pyplot as plt
