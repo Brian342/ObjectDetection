@@ -97,7 +97,7 @@ with tabs[0]:
 
     st.markdown("<div style='margin-bottom:10px'></div>", unsafe_allow_html=True)
 
-    c1, c2, c3 = st.columns([3.4, 4.99, 5.5])
+    c1, c2, c3 = st.columns([3.4, 4.99, 5.69])
 
     with c1:
         st.markdown(
@@ -150,3 +150,14 @@ with tabs[0]:
             """,
             unsafe_allow_html=True
         )
+    st.markdown("<br>", unsafe_allow_html=True)
+
+with tabs[1]:
+    st.markdown(
+        "<div class='card'><h4 style='margin:0'>Why need this system?</h4>"
+        "<div style='color:gray;margin-top:6px'>Alot of car crash result from drivers sleeping while driving. "
+        "Drowsy driving is a significant factor in car crashes, with estimates suggesting it's involved in nearly 30,000 "
+        "deaths between 2017 and 2021 and can lead to significantly increased crash risk. For example, sleeping less than 5 "
+        "hours per night quadruples a driver's risk of crashing compared to those who sleep 8 or more hours</div></div>",
+        unsafe_allow_html=True
+    ),
