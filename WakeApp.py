@@ -97,11 +97,15 @@ with tabs[0]:
 
     st.markdown("<div style='margin-bottom:10px'></div>", unsafe_allow_html=True)
 
-    c1 = st.columns(1)
+    c1, c2 = st.columns(1, 1)
 
     with c1:
         st.markdown(
             "<div class='card'><h4 style='margin:0'>Overview</h4>"
             "<div style='color:gray;margin-top:6px'>Quick glance at what users search for</div></div>",
             unsafe_allow_html=True
+        )
+    with c2:
+        st.markdown(
+
         )
