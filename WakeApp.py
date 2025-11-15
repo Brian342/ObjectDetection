@@ -175,7 +175,16 @@ with tabs[1]:
             """,
             unsafe_allow_html=True
         )
-        st.empty()
+        start = [-1.0987, 37.0084]
+        end = [-1.286389, 36.817223]
+
+        m = folium.Map(location=start, zoom_start=12)
+
+        folium.Marker(start, tooltip="start").add_to(m)
+        folium.Marker(end, tooltip="Destination").add_to(m)
+        folium.PolyLine([start, end], color="blue", weight=4).add_to(m)
+
+        st_data = st_folium(m, width=700, height=500)
 
     with col2:
         st.markdown(
@@ -203,16 +212,6 @@ with tabs[1]:
              """,
             unsafe_allow_html=True
         )
-        start = [-1.0987, 37.0084]
-        end = [-1.286389, 36.817223]
-
-        m = folium.Map(location=start, zoom_start=12)
-
-        folium.Marker(start, tooltip="start").add_to(m)
-        folium.Marker(end, tooltip="Destination").add_to(m)
-        folium.PolyLine([start, end], color="blue", weight=4).add_to(m)
-
-        st_data = st_folium(m, width=700, height=500)
 
 
 
