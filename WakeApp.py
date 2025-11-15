@@ -160,31 +160,34 @@ with tabs[1]:
         "Visual Page")
     col1, col2 = st.columns([2, 1.9])
     with col1:
-        st.markdown(
-            """
-            <div style="
-                background-color: #ffffff;
-                padding: 1.2rem;
-                border-radius: 15px;
-                box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-                height: 450px;
-            ">
-            <h3 style="margin-top:0;color:black:">Route Map</h3>
-            <p style="color:gray">Your map and directions will appear here.</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        start = [-1.0987, 37.0084]
-        end = [-1.286389, 36.817223]
+        with st.container():
+            st.markdown("### Route Map")
+            st.write("Your map and directions will appear here.")
+        # st.markdown(
+        #     """
+        #     <div style="
+        #         background-color: #ffffff;
+        #         padding: 1.2rem;
+        #         border-radius: 15px;
+        #         box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        #
+        #     ">
+        #     <h3 style="margin-top:0;color:black;">Route Map</h3>
+        #     <p style="color:gray">Your map and directions will appear here.</p>
+        #     </div>
+        #     """,
+        #     unsafe_allow_html=True
+        # )
+            start = [-1.0987, 37.0084]
+            end = [-1.286389, 36.817223]
 
-        m = folium.Map(location=start, zoom_start=12)
+            m = folium.Map(location=start, zoom_start=12)
+            folium.Marker(start, tooltip="start").add_to(m)
+            folium.Marker(end, tooltip="Destination").add_to(m)
+            folium.PolyLine([start, end], color="blue", weight=4).add_to(m)
 
-        folium.Marker(start, tooltip="start").add_to(m)
-        folium.Marker(end, tooltip="Destination").add_to(m)
-        folium.PolyLine([start, end], color="blue", weight=4).add_to(m)
-
-        st_data = st_folium(m, width=700, height=500)
+            # Display map (outside the div but visually looks like it’s inside)
+            st_folium(m, width=700, height=500)
 
     with col2:
         st.markdown(
@@ -212,6 +215,3 @@ with tabs[1]:
              """,
             unsafe_allow_html=True
         )
-
-
-
