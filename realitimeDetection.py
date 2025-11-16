@@ -16,18 +16,30 @@ model = YOLO("yolov8n.pt")
 
 
 def Detect_RealTime():
-    cap = cv2.VideoCapture(0, cv2.CAP_AVFOUNDATION)
-    while cap.isOpened():
+    st_frame = st.empty() # container for streaming frame
+
+    cap = cv2.VideoCapture(0)
+
+    if not cap.isOpened():
+        st.error("Camera Failed to Open!!")
+        return
+
+    while True:
         ret, frame = cap.read()
+        if not ret:
+            st.warning("No frame captured. Camera Off?")
+            break
 
-        # make detection
         results = model(frame)
+        annotated = results[0].plot()
 
-        annotated_frame = results[0].plot()
-        frame_resized = cv2.resize(annotated_frame, (960, 540))  # (width, height)
-        cv2.imshow("Awake/Drowsy", frame_resized)
+        # Convert BGR to RGB for Streamlit
+        rgb = cv2.cvtColor(annotated, cv2.COLOR_BGR2RGB)
 
-        if cv2.waitKey(10) & 0xFF == ord("q"):
+        st_frame.image(rgb, channels='RGB')
+
+        # stop button inside ui
+        if st.button("Stop"):
             break
     cap.release()
-    cv2.destroyAllWindows()
+
