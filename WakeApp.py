@@ -158,24 +158,9 @@ with tabs[0]:
 with tabs[1]:
     st.header(
         "Visual Page")
-    st.markdown('-----')
-
+    # st.markdown('-----')
     col1, col2 = st.columns([2, 1.9])
     with col1:
-        st.markdown(
-            """
-            <div style="
-                background-color: #ffffff;
-                padding: 1.2rem;
-                border-radius: 15px;
-                box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-                
-            <h3 style="margin-top:0;color:white;">Route Map</h3>
-            <p style="color:gray">Your map and directions will appear here.</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
         start = [-1.0987, 37.0084]
         end = [-1.286389, 36.817223]
 
@@ -186,13 +171,26 @@ with tabs[1]:
 
         # Display map (outside the div but visually looks like it’s inside)
         st_folium(m, width=700, height=500)
+        st.markdown(
+            """
+            <div style="
+                background-color: #ffffff;
+                padding: 1.2rem;
+                border-radius: 15px;
+                box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
 
+            <h3 style="margin-top:0;color:white;">Route Map</h3>
+            <p style="color:gray">Your map and directions will appear here.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
     with col2:
         st.markdown(
             """
              <div style="
              background-color: #ffffff;
-             padding: 1.5rem;
+             padding: 2.5rem;
              border-radius: 15px;
              text-align: center;
              box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
@@ -207,7 +205,7 @@ with tabs[1]:
              background-color: #e8f0fe;
              color: #1a73e8;
              ">
-             Awake
+             Awake/Asleep
              </div>
              </div>
              """,
