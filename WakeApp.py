@@ -207,13 +207,15 @@ with tabs[1]:
              color: #1a73e8;
              ">
              Awake/Asleep
-             {Detect_RealTime()}
              </div>
              </div>
              """,
             unsafe_allow_html=True
 
         )
+        if st.button("Start Real-Time Detection"):
+            Detect_RealTime()
+
 
 
 
