@@ -158,6 +158,8 @@ with tabs[0]:
 with tabs[1]:
     st.header(
         "Visual Page")
+    st.markdown('-----')
+
     col1, col2 = st.columns([2, 1.9])
     with col1:
         st.markdown(
@@ -183,7 +185,7 @@ with tabs[1]:
         folium.PolyLine([start, end], color="blue", weight=4).add_to(m)
 
         # Display map (outside the div but visually looks like it’s inside)
-        st_folium(m, width=40, height=500)
+        st_folium(m, width=700, height=500)
 
     with col2:
         st.markdown(
