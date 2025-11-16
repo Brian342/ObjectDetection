@@ -23,7 +23,7 @@ def Detect_RealTime():
         st.session_state.run_detection = False
 
     # start button
-    if st.button("Start Detection", key="start_btn"):
+    if st.button("Start Real-Time Detection", key="start_btn"):
         st.session_state.run_detection = True
 
     # stop button
