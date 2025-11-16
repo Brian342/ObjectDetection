@@ -213,8 +213,13 @@ with tabs[1]:
             unsafe_allow_html=True
 
         )
-        if st.button("Start Real-Time Detection"):
-            Detect_RealTime()
+        # if st.button("Start Real-Time Detection", key="start_main"):
+        #     st.session_state.run_detection = True
+        #
+        # if st.button("Stop Detection", key="stop_main"):
+        #     st.session_state.run_detection = False
+
+        Detect_RealTime()
 
 
 
