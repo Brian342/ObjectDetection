@@ -13,10 +13,22 @@ from ultralytics import YOLO
 from matplotlib import pyplot as plt
 
 model = YOLO("yolov8n.pt")
+model = YOLO("runs/classify/train3/weights/best.pt")
 
 
 def Detect_RealTime():
-    st_frame = st.empty() # container for streaming frame
+    st_frame = st.empty()  # container for streaming frame
+
+    if "run_detection" not in st.session_state:
+        st.session_state.run_detection = False
+
+    # start button
+    if st.button("Start Detection", key="start_btn"):
+        st.session_state.run_detection = True
+
+    # stop button
+    if st.button("Stop Detection", key="Stop_btn"):
+        st.session_state.run_detection = False
 
     cap = cv2.VideoCapture(0)
 
@@ -24,7 +36,7 @@ def Detect_RealTime():
         st.error("Camera Failed to Open!!")
         return
 
-    while True:
+    while st.session_state.run_detection:
         ret, frame = cap.read()
         if not ret:
             st.warning("No frame captured. Camera Off?")
@@ -38,8 +50,4 @@ def Detect_RealTime():
 
         st_frame.image(rgb, channels='RGB')
 
-        # stop button inside ui
-        if st.button("Stop"):
-            break
     cap.release()
-
