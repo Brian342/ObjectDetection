@@ -188,7 +188,7 @@ with tabs[1]:
         )
     with col2:
         st.markdown(
-            """
+            f"""
              <div style="
              background-color: #ffffff;
              padding: 2.5rem;
@@ -207,17 +207,16 @@ with tabs[1]:
              color: #1a73e8;
              ">
              Awake/Asleep
+             {Detect_RealTime()}
              </div>
              </div>
              """,
             unsafe_allow_html=True
-        )
-        # Detect_RealTime()
 
-        model = YOLO("runs/classify/train3/weights/best.pt")
-        result = model("data/train/awake/awake.d219468c-a38d-11f0-b723-1094bbd0ecec.jpg")[0]
-        result2 = model("data/train/drowsy/drowsy.ff9646aa-a38d-11f0-b723-1094bbd0ecec.jpg")[0]
-        result2.verbose()
+        )
+
+
+
 
 
 
