@@ -10,6 +10,7 @@ import folium
 import streamlit as st
 from ultralytics import YOLO
 from matplotlib import pyplot as plt
+from realitimeDetection import*
 
 # modification of streamlit page
 st.set_page_config(page_title="Driving Monitor app", layout="wide", initial_sidebar_state="expanded")
@@ -211,4 +212,5 @@ with tabs[1]:
              """,
             unsafe_allow_html=True
         )
+        Detect_RealTime()
 
