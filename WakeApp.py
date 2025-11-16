@@ -212,5 +212,13 @@ with tabs[1]:
              """,
             unsafe_allow_html=True
         )
-        Detect_RealTime()
+        # Detect_RealTime()
+
+        model = YOLO("runs/classify/train3/weights/best.pt")
+        result = model("data/train/awake/awake.d219468c-a38d-11f0-b723-1094bbd0ecec.jpg")[0]
+        result2 = model("data/train/drowsy/drowsy.ff9646aa-a38d-11f0-b723-1094bbd0ecec.jpg")[0]
+        result2.verbose()
+
+
+
 
