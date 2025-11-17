@@ -71,16 +71,22 @@ section[data-testid="stSidebar"] .css-1d391kg {
   background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   padding: 10px 12px;border-radius:12px;margin:6px 0;
 }
+footer {
+    color: white !important;
+    background-color: #0e1117;
+    padding: 8px;
+    font-size: 16px;
+}
 </style>
 """
 
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
-with st.sidebar:
-    st.markdown(
-        "<div style='display:flex;align-items:center;gap:10px'><div class='logo-circle'>WA</div><div><h3 style='margin:0'>WakeApp</h3><div style='font-size:12px;color:gray'>Opencv · YOLO · Torch</div></div></div>",
-        unsafe_allow_html=True)
-    st.markdown("-------")
-    st.caption("Built w/ OpenCv + YOLO + Torch. prototype")
+# with st.sidebar:
+#     st.markdown(
+#         "<div style='display:flex;align-items:center;gap:10px'><div class='logo-circle'>WA</div><div><h3 style='margin:0'>WakeApp</h3><div style='font-size:12px;color:gray'>Opencv · YOLO · Torch</div></div></div>",
+#         unsafe_allow_html=True)
+#     st.markdown("-------")
+#     st.caption("Built w/ OpenCv + YOLO + Torch. prototype")
 
 tabs = st.tabs(["Overview", "visual", "settings"])
 
