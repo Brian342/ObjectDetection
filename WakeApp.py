@@ -11,6 +11,7 @@ import streamlit as st
 from ultralytics import YOLO
 from matplotlib import pyplot as plt
 from realitimeDetection import*
+import googlemaps
 
 # modification of streamlit page
 st.set_page_config(page_title="Driving Monitor app", layout="wide", initial_sidebar_state="expanded")
@@ -165,9 +166,17 @@ with tabs[0]:
 with tabs[1]:
     st.header(
         "Visual Page")
-    # st.markdown('-----')
+
     col1, col2 = st.columns([2, 1.9])
     with col1:
+        API_KEY = "pass"
+        gmaps = googlemaps.Client(API_KEY)
+
+        start_loc = st.text_input("Enter start location", "Nairobi, Kenya")
+        stop_loc = st.text_input("Enter stop location", "Kisumu, Kenya")
+
+        if st.button("Show Route"):
+            start_geoloc =
         start = [-1.0987, 37.0084]
         end = [-1.286389, 36.817223]
 
