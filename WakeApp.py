@@ -176,7 +176,15 @@ with tabs[1]:
         stop_loc = st.text_input("Enter stop location", "Kisumu, Kenya")
 
         if st.button("Show Route"):
-            start_geoloc =
+            start_geoloc = gmaps.geocode(start_loc)
+            end_geoloc = gmaps.geocode(stop_loc)
+
+        if start_geoloc and end_geoloc:
+            start_cords = start_geoloc[0]['geometry']['location']
+            end_cords = end_geoloc[0]['geometry']['location']
+
+            start = [start_cords['lat'], start_cords['lng']]
+            end = [end_cords['lat'], end_cords['lng']]
         start = [-1.0987, 37.0084]
         end = [-1.286389, 36.817223]
 
