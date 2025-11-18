@@ -10,9 +10,8 @@ import folium
 import streamlit as st
 from ultralytics import YOLO
 from matplotlib import pyplot as plt
-from realitimeDetection import *
+from realitimeDetection import*
 import googlemaps
-import polyline
 
 # modification of streamlit page
 st.set_page_config(page_title="Driving Monitor app", layout="wide", initial_sidebar_state="expanded")
@@ -170,43 +169,31 @@ with tabs[1]:
 
     col1, col2 = st.columns([2, 1.9])
     with col1:
-        API_KEY = "pass"
-        gmaps = googlemaps.Client(API_KEY)
+        # API_KEY = "pass"
+        # gmaps = googlemaps.Client(API_KEY)
+        #
+        # start_loc = st.text_input("Enter start location", "Nairobi, Kenya")
+        # stop_loc = st.text_input("Enter stop location", "Kisumu, Kenya")
+        #
+        # if st.button("Show Route"):
+        #     start_geoloc = gmaps.geocode(start_loc)
+        #     end_geoloc = gmaps.geocode(stop_loc)
+        #
+        # if start_geoloc and end_geoloc:
+        #     start_cords = start_geoloc[0]['geometry']['location']
+        #     end_cords = end_geoloc[0]
+        start = [-1.0987, 37.0084]
+        end = [-1.286389, 36.817223]
 
-        start_loc = st.text_input("Enter start location", "Nairobi, Kenya")
-        stop_loc = st.text_input("Enter stop location", "Kisumu, Kenya")
+        m = folium.Map(location=start, zoom_start=12)
+        folium.Marker(start, tooltip="start").add_to(m)
+        folium.Marker(end, tooltip="Destination").add_to(m)
+        folium.PolyLine([start, end], color="blue", weight=4).add_to(m)
 
-        if st.button("Show Route"):
-            start_geoloc = gmaps.geocode(start_loc)
-            end_geoloc = gmaps.geocode(stop_loc)
-
-        if start_geoloc and end_geoloc:
-            start_cords = start_geoloc[0]['geometry']['location']
-            end_cords = end_geoloc[0]['geometry']['location']
-
-            start = [start_cords['lat'], start_cords['lng']]
-            end = [end_cords['lat'], end_cords['lng']]
-
-            # get direction
-            direction_res = gmaps.directions(
-                start,
-                end,
-                mode="Driving"
-            )
-            route_polyline = direction_res[0]['overview_polyline']['points']
-            route_cords = polyline.decode(route_polyline)
-
-            m = folium.Map(location=start, zoom_start=12)
-            folium.Marker(start, tooltip="start", icon=folium.Icon(color="green")).add_to(m)
-            folium.Marker(end, tooltip="Destination", icon=folium.Icon(color="red")).add_to(m)
-            folium.PolyLine(route_cords, color="blue", weight=4).add_to(m)
-
-            # Display map (outside the div but visually looks like it’s inside)
-            st_folium(m, width=700, height=500)
-        else:
-            st.error("Could not geocode the provided location")
-            st.markdown(
-                """
+        # Display map (outside the div but visually looks like it’s inside)
+        st_folium(m, width=700, height=500)
+        st.markdown(
+            """
             <div style="
                 background-color: #ffffff;
                 padding: 1.2rem;
@@ -217,8 +204,8 @@ with tabs[1]:
             <p style="color:gray">Your map and directions will appear here.</p>
             </div>
             """,
-                unsafe_allow_html=True
-            )
+            unsafe_allow_html=True
+        )
     with col2:
         st.markdown(
             f"""
@@ -246,3 +233,11 @@ with tabs[1]:
             unsafe_allow_html=True,
         )
         Detect_RealTime()
+
+
+
+
+
+
+
+
