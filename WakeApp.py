@@ -207,6 +207,7 @@ with tabs[1]:
             unsafe_allow_html=True
         )
     with col2:
+        Detect_RealTime()
         st.markdown(
             f"""
              <div style="
@@ -232,7 +233,6 @@ with tabs[1]:
              """,
             unsafe_allow_html=True,
         )
-        Detect_RealTime()
 
 
 
