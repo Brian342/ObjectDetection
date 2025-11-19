@@ -53,6 +53,16 @@ def Detect_RealTime():
 
         current_time = time.time()
 
+        if is_drowsy_now:
+            if st.session_state.drowsy_start_time is None:
+                st.session_state.drowsy_start_time = current_time
+            else:
+                elapsed = current_time - st.session_state.drowsy_start_time
+
+                if elapsed >= 10 and not st.session_state.drowsy_warning_triggered:
+                    st.warning("Wake Up!!!!")
+                    st.session_state.drowsy_warning_triggered = True
+
         annotated = results[0].plot()
 
         # Convert BGR to RGB for Streamlit
