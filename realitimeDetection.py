@@ -43,6 +43,16 @@ def Detect_RealTime():
             break
 
         results = model(frame)
+        probs = results[0].probs.data.tolist() # probability array
+        awake_prob = probs[0]
+        drowsy_prob = probs[1]
+
+        # checking if the drowsy is above 0.51%>
+        threshold = 0.51
+        is_drowsy_now = drowsy_prob >= threshold
+
+        current_time = time.time()
+
         annotated = results[0].plot()
 
         # Convert BGR to RGB for Streamlit
