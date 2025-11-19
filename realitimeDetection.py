@@ -85,3 +85,13 @@ def alarm_user():
         audio_bytes = f.read()
 
     st.audio(audio_bytes, format='audio/mp3')
+
+    import base64
+    encoded = base64.b64encode(audio_bytes).decode()
+
+    audio_html = f"""
+            <audio autoplay>
+                <source src="data:audio/mp3;base64,{encoded}" type="audio/mp3">
+            </audio>
+        """
+    st.markdown(audio_html, unsafe_allow_html=True)
