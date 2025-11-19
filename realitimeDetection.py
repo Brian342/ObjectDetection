@@ -59,7 +59,7 @@ def Detect_RealTime():
             else:
                 elapsed = current_time - st.session_state.drowsy_start_time
 
-                if elapsed >= 10 and not st.session_state.drowsy_warning_triggered:
+                if elapsed >= 5 and not st.session_state.drowsy_warning_triggered:
                     st.warning("Wake Up!!!!")
 
                     alarm_user()
@@ -80,7 +80,8 @@ def Detect_RealTime():
 
 
 def alarm_user():
-    audio_file = open("Apple_alarm.mp4")
-    audio_bytes = audio_file.read()
+    audio_path = "Apple_alarm.mp3"
+    with open(audio_path, 'rb') as f:
+        audio_bytes = f.read()
 
-    st.audio(audio_bytes, format='audio/mp4')
+    st.audio(audio_bytes, format='audio/mp3')
