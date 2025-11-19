@@ -43,7 +43,7 @@ def Detect_RealTime():
             break
 
         results = model(frame)
-        probs = results[0].probs.data.tolist() # probability array
+        probs = results[0].probs.data.tolist()  # probability array
         awake_prob = probs[0]
         drowsy_prob = probs[1]
 
@@ -75,3 +75,10 @@ def Detect_RealTime():
         st_frame.image(rgb, channels='RGB')
 
     cap.release()
+
+
+def alarm_user():
+    audio_file = open("paly_me.mp3")
+    audio_bytes = audio_file.read()
+
+    st.audio(audio_bytes, format='audio/mp3')
