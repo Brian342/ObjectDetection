@@ -3,19 +3,32 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import auth
 
-cred = credentials.Certificate('wakeapp-51082-fb1600eb10dc.json')
-firebase_admin.initialize_app(cred)
+if not firebase_admin._apps:
+    cred = credentials.Certificate('wakeapp-51082-fb1600eb10dc.json')
+    firebase_admin.initialize_app(cred, {
+        "project_id": "wakeapp-51082",
+    })
 
 
-def auth():
+def authentication():
     st.title('Welcome to :grey[WakeApp]')
 
     choose = st.selectbox('Login/SignUp', ['Login', 'Sign Up'])
+
+    def validate():
+        try:
+            user = auth.get_user_by_email(email)
+            # print(user.uid)
+            st.write("Login Successful")
+
+        except:
+            st.warning('Login Failed')
+
     if choose == 'Login':
         email = st.text_input('Email address')
         password = st.text_input('Password', type='password')
 
-        st.button('Login')
+        st.button('Login', on_click=validate())
 
     else:
         email = st.text_input('Email address')
@@ -28,4 +41,3 @@ def auth():
             st.success('Account Created Successfully!')
             st.markdown('please Login Using Your Email and Password!')
             st.balloons()
-

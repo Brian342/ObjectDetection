@@ -16,7 +16,6 @@ from account import *
 
 # modification of streamlit page
 st.set_page_config(page_title="Driving Monitor app", layout="wide", initial_sidebar_state="expanded")
-auth()
 
 CUSTOM_CSS = r"""
     <style>
@@ -91,9 +90,12 @@ st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 #     st.markdown("-------")
 #     st.caption("Built w/ OpenCv + YOLO + Torch. prototype")
 
-tabs = st.tabs(["Overview", "visual", "settings"])
+tabs = st.tabs(["Login/SignUp", "Overview", "visual", "settings"])
 
 with tabs[0]:
+    authentication()
+
+with tabs[1]:
     st.markdown(
         """
             <div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:20px'>
@@ -165,7 +167,7 @@ with tabs[0]:
         )
     st.markdown("<br>", unsafe_allow_html=True)
 
-with tabs[1]:
+with tabs[2]:
     st.header(
         "Visual Page")
 
