@@ -3,6 +3,9 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import auth
 
+cred = credentials.Certificate('wakeapp-51082-fb1600eb10dc.json')
+firebase_admin.initialize_app(cred)
+
 
 def auth():
     st.title('Welcome to :grey[WakeApp]')
