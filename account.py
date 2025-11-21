@@ -8,3 +8,12 @@ def auth():
     if choose == 'Login':
         email = st.text_input('Email address')
         password = st.text_input('Password', type='password')
+
+        st.button('Login')
+
+    else:
+        email = st.text_input('Email address')
+        password = st.text_input('Password', type='password')
+        user  = st.text_input('Enter your Unique UserName')
+        st.button('Create Account')
+
