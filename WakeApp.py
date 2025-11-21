@@ -12,6 +12,8 @@ from ultralytics import YOLO
 from matplotlib import pyplot as plt
 from realitimeDetection import*
 import googlemaps
+from account import*
+auth()
 
 # modification of streamlit page
 st.set_page_config(page_title="Driving Monitor app", layout="wide", initial_sidebar_state="expanded")
