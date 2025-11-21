@@ -4,9 +4,11 @@ import firebase_admin
 from firebase_admin import credentials, auth
 
 if not firebase_admin._apps:
-    os.environ["GOOGLE_CLOUD_PROJECT"] = "wakeapp-51082"
+    # os.environ["GOOGLE_CLOUD_PROJECT"] = "wakeapp-51082"
     cred = credentials.Certificate('wakeapp-51082-a620b5257b0c.json')
-    firebase_admin.initialize_app(cred)
+    firebase_admin.initialize_app(cred, {
+        "project_id": "wakeapp-51082",
+    })
 
 
 def authentication():
