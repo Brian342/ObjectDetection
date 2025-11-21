@@ -1,12 +1,11 @@
 import streamlit as st
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import auth
+from firebase_admin import credentials, auth
 
 if not firebase_admin._apps:
     cred = credentials.Certificate('wakeapp-51082-fb1600eb10dc.json')
     firebase_admin.initialize_app(cred, {
-        "project_id": "wakeapp-51082",
+        "projectId": "wakeapp-51082",
     })
 
 
