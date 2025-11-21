@@ -20,6 +20,12 @@ def auth():
     else:
         email = st.text_input('Email address')
         password = st.text_input('Password', type='password')
-        user  = st.text_input('Enter your Unique UserName')
-        st.button('Create Account')
+        userName = st.text_input('Enter your Unique UserName')
+
+        if st.button('Create Account'):
+            user = auth.create_user(email=email, password=password, uid=userName)
+
+            st.success('Account Created Successfully!')
+            st.markdown('please Login Using Your Email and Password!')
+            st.balloons()
 
