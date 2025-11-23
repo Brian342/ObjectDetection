@@ -93,7 +93,7 @@ st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 tabs = st.tabs(["Login/SignUp", "Overview", "visual", "settings"])
 
 with tabs[0]:
-    authentication()
+    credential()
 
 with tabs[1]:
     st.markdown(

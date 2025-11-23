@@ -5,11 +5,11 @@ from firebase_admin import credentials, auth
 
 if not firebase_admin._apps:
     # os.environ["GOOGLE_CLOUD_PROJECT"] = "wakeapp-51082"
-    cred = credentials.Certificate('/Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/ObjectDetection/wakeapp-51082-a620b5257b0c.json')
-    firebase_admin.initialize_app(cred)
+    # cred = credentials.Certificate('/Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/ObjectDetection/wakeapp-51082-a620b5257b0c.json')
+    firebase_admin.initialize_app(options={"project_id": "wakeapp-51082"})
 
 
-def authentication():
+def credential():
     st.title('Welcome to :blue[WakeApp]')
 
     choose = st.selectbox('Login/SignUp', ['Login', 'Sign Up'])
@@ -27,7 +27,7 @@ def authentication():
         email = st.text_input('Email address')
         password = st.text_input('Password', type='password')
 
-        st.button('Login', on_click=validate())
+        st.button('Login', on_click=validate)
 
     else:
         email = st.text_input('Email address')
