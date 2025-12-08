@@ -1,7 +1,6 @@
-import streamlit as st
-import os
 import firebase_admin
-from firebase_admin import credentials, auth
+import streamlit as st
+from firebase_admin import auth
 
 if not firebase_admin._apps:
     # os.environ["GOOGLE_CLOUD_PROJECT"] = "wakeapp-51082"

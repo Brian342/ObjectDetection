@@ -1,16 +1,9 @@
 # packages import
-import torch
-import uuid
-import os
-import cv2
 import time
-import numpy as np
-import pydeck as pdk
-from streamlit_folium import st_folium
-import folium
+
+import cv2
 import streamlit as st
 from ultralytics import YOLO
-from matplotlib import pyplot as plt
 
 model = YOLO("yolov8n.pt")
 model = YOLO("runs/classify/train3/weights/best.pt")
