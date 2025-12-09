@@ -1,9 +1,21 @@
 import streamlit as st
 import firebase_admin
-from firebase_admin import credentials, auth
+from firebase_admin import credentials, auth, _apps, exceptions
+import json
+import os
 
-cred = credentials.Certificate(
-    "/Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/ObjectDetection/wakeapp-51082-firebase-adminsdk-fbsvc-97a897121b.json")
+LOCAL_KEY_PATH = "wakeapp-51082-firebase-adminsdk-fbsvc-97a897121b.json"
+
+if "FIREBASE_SERVICE_ACCOUNT_JSON" in st.secrets:
+    st.info("Using Streamlit Secrets for Firebase Connection.")
+    try:
+        service_account_info = json.loads(st.secrets["FIREBASE_SERVICE_ACCOUNT_JSON"])
+        cred = credentials.Certificate(service_account_info)
+    except Exception as e:
+        st.error(f"Error loading JSON from secrets. Check your .streamlit/secrets.toml file. Error: {e}")
+        st.stop()
+else:
+    st.info()
 
 # Initialize the app with the credentials
 firebase_admin.initialize_app(cred)
