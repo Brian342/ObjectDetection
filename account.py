@@ -15,10 +15,20 @@ if "FIREBASE_SERVICE_ACCOUNT_JSON" in st.secrets:
         st.error(f"Error loading JSON from secrets. Check your .streamlit/secrets.toml file. Error: {e}")
         st.stop()
 else:
-    st.info()
+    st.info("Using Local file path for Firebase Connection")
+    try:
+        cred = credentials.Certificate(LOCAL_KEY_PATH)
+    except FileNotFoundError:
+        st.error(f"FATAL ERROR: Local key file not found at {LOCAL_KEY_PATH}. Ensure the path is correct.")
+        st.stop()
 
 # Initialize the app with the credentials
-firebase_admin.initialize_app(cred)
+if not _apps:
+    try:
+        firebase_admin.initialize_app(cred)
+    except Exception as e:
+        st.error(f"Firebase Initialization Failed: {e}")
+        st.stop()
 
 
 def credential():
@@ -26,29 +36,50 @@ def credential():
 
     choose = st.selectbox('Login/SignUp', ['Login', 'Sign Up'])
 
-    def validate():
-        try:
-            user = auth.get_user_by_email(email)
-            # print(user.uid)
-            st.write("Login Successful")
-
-        except:
-            st.warning('Login Failed')
-
     if choose == 'Login':
-        email = st.text_input('Email address')
-        password = st.text_input('Password', type='password')
+        email = st.text_input('Email address', key='login_email')
+        password = st.text_input('Password', type='password', key='login_password')
 
-        st.button('Login', on_click=validate)
+        if st.button('Login'):
+            if not email or not password:
+                st.warning("Email and Password are required.")
+                return
 
-    else:
-        email = st.text_input('Email address')
-        password = st.text_input('Password', type='password')
-        userName = st.text_input('Enter your Unique UserName')
+            # Note: Firebase Admin SDK does not have a direct signIn function.
+            # get_user_by_email only checks if the user exists.
+            # For a proper login check, you often need to use a client SDK
+            # or a custom security token verification.
+            # Assuming you only need to check existence for now:
+            try:
+                # This checks existence, not password validity!
+                auth.get_user_by_email(email)
+                st.success("Login Successful (User found in database)!")
+            except firebase_admin.exceptions.NotFoundError:
+                st.error('Login Failed: User not found.')
+            except Exception as e:
+                st.error(f'Login Failed due to an error: {e}')
+
+    else:  # Sign Up
+        email = st.text_input('Email address', key='signup_email')
+        password = st.text_input('Password', type='password', key='signup_password')
+        userName = st.text_input('Enter your Unique UserName', key='signup_username')
 
         if st.button('Create Account'):
-            user = auth.create_user(email=email, password=password, uid=userName)
+            if not all([email, password, userName]):
+                st.warning("All fields are required to create an account.")
+                return
 
-            st.success('Account Created Successfully!')
-            st.markdown('please Login Using Your Email and Password!')
-            st.balloons()
+            try:
+                # Auth.create_user handles the signup
+                auth.create_user(email=email, password=password, uid=userName)
+
+                st.success('Account Created Successfully!')
+                st.markdown('Please Login Using Your Email and Password!')
+                st.balloons()
+
+            except firebase_admin.exceptions.EmailAlreadyExistsError:
+                st.error("Account Creation Failed: This email address is already in use.")
+            except firebase_admin.exceptions.InvalidPasswordError:
+                st.error("Account Creation Failed: Password must be at least 6 characters long.")
+            except Exception as e:
+                st.error(f"Account Creation Failed: {e}")
