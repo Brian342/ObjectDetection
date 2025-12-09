@@ -1,11 +1,12 @@
-import firebase_admin
 import streamlit as st
-from firebase_admin import auth
+import firebase_admin
+from firebase_admin import credentials, auth
 
-if not firebase_admin._apps:
-    # os.environ["GOOGLE_CLOUD_PROJECT"] = "wakeapp-51082"
-    # cred = credentials.Certificate('/Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/ObjectDetection/wakeapp-51082-a620b5257b0c.json')
-    firebase_admin.initialize_app(options={"project_id": "wakeapp-51082"})
+cred = credentials.Certificate(
+    "/Users/briankimanzi/Documents/ebooks/wakeapp-51082-firebase-adminsdk-fbsvc-97a897121b.json")
+
+# Initialize the app with the credentials
+firebase_admin.initialize_app(cred)
 
 
 def credential():
