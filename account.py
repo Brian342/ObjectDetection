@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials, auth
 
 cred = credentials.Certificate(
-    "/Users/briankimanzi/Documents/ebooks/wakeapp-51082-firebase-adminsdk-fbsvc-97a897121b.json")
+    "/Users/briankimanzi/Documents/programmingLanguages/PythonProgramming/ObjectDetection/wakeapp-51082-firebase-adminsdk-fbsvc-97a897121b.json")
 
 # Initialize the app with the credentials
 firebase_admin.initialize_app(cred)
