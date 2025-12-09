@@ -8,12 +8,12 @@ beautifulsoup4
 bleach
 blinker
 branca
-brotlicffi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_05qpoetyrv/croot/brotlicffi_1736182869800/work
+brotlicffi
 CacheControl
 cachetools
 certifi
 cffi
-charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
+charset-normalizer
 click
 comm
 contourpy
@@ -42,7 +42,7 @@ google-cloud-storage
 google-crc32c
 google-resumable-media
 googleapis-common-protos
-googlemaps @ file:///home/conda/feedstock_root/build_artifacts/googlemaps_1735608477521/work
+googlemaps
 grpcio
 grpcio-status
 h11
@@ -89,7 +89,7 @@ pillow
 pipreqs
 platformdirs
 polars
-polyline @ file:///home/conda/feedstock_root/build_artifacts/polyline_1753959191943/work
+polyline
 prompt_toolkit
 proto-plus
 protobuf
@@ -99,18 +99,18 @@ pure_eval
 pyarrow
 pyasn1
 pyasn1_modules
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pycparser
 pydeck
 Pygments
 PyJWT
 pyparsing
-PySocks @ file:///Users/builder/ci_310/pysocks_1642536366386/work
+PySocks
 python-dateutil
 pytz
 PyYAML
 pyzmq
 referencing
-requests @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_3c5r_7_lxu/croot/requests_1750426340266/work
+requests
 rich
 rpds-py
 rsa
@@ -135,7 +135,7 @@ typing_extensions
 tzdata
 ultralytics
 ultralytics-thop
-urllib3 @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_f8xnjmnanx/croot/urllib3_1750775879857/work
+urllib3
 wcwidth
 webencodings
 xyzservices
