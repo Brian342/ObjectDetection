@@ -45,11 +45,6 @@ def credential():
                 st.warning("Email and Password are required.")
                 return
 
-            # Note: Firebase Admin SDK does not have a direct signIn function.
-            # get_user_by_email only checks if the user exists.
-            # For a proper login check, you often need to use a client SDK
-            # or a custom security token verification.
-            # Assuming you only need to check existence for now:
             try:
                 # This checks existence, not password validity!
                 auth.get_user_by_email(email)
